@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="xEs-28-j4E" customClass="ChooseOnMapView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_place_black.png" translatesAutoresizingMaskIntoConstraints="NO" id="RS7-AB-yP2" userLabel="imgvIcon">
+                    <rect key="frame" x="0.0" y="0.0" width="40" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="ixU-ma-hM4"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WrD-Iy-Q4K" userLabel="btnChooseOnMap">
+                    <rect key="frame" x="40" y="0.0" width="280" height="49"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="Choose on map">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="touchChooseOnMap:" destination="xEs-28-j4E" eventType="touchUpInside" id="JD6-Ih-CTn"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7I4-SQ-d8d" userLabel="line">
+                    <rect key="frame" x="0.0" y="49" width="320" height="1"/>
+                    <color key="backgroundColor" red="0.839253798" green="0.839253798" blue="0.839253798" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="RT2-rL-DmW"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="WrD-Iy-Q4K" secondAttribute="trailing" id="0FA-or-y8f"/>
+                <constraint firstItem="RS7-AB-yP2" firstAttribute="top" secondItem="xEs-28-j4E" secondAttribute="top" id="21Y-H9-6N6"/>
+                <constraint firstItem="7I4-SQ-d8d" firstAttribute="top" secondItem="RS7-AB-yP2" secondAttribute="bottom" id="3Kd-WR-h0h"/>
+                <constraint firstAttribute="bottom" secondItem="WrD-Iy-Q4K" secondAttribute="bottom" id="DLS-DT-ly6"/>
+                <constraint firstAttribute="bottom" secondItem="7I4-SQ-d8d" secondAttribute="bottom" id="MJK-OU-CDq"/>
+                <constraint firstItem="WrD-Iy-Q4K" firstAttribute="leading" secondItem="RS7-AB-yP2" secondAttribute="trailing" id="Ul5-mM-Q0S"/>
+                <constraint firstItem="7I4-SQ-d8d" firstAttribute="top" secondItem="WrD-Iy-Q4K" secondAttribute="bottom" id="YYN-aL-zxz"/>
+                <constraint firstAttribute="bottom" secondItem="RS7-AB-yP2" secondAttribute="bottom" id="cBf-0w-w1Z"/>
+                <constraint firstItem="7I4-SQ-d8d" firstAttribute="leading" secondItem="xEs-28-j4E" secondAttribute="leading" id="rTv-2g-iKi"/>
+                <constraint firstAttribute="trailing" secondItem="7I4-SQ-d8d" secondAttribute="trailing" id="sIz-Fz-9ta"/>
+                <constraint firstItem="WrD-Iy-Q4K" firstAttribute="top" secondItem="xEs-28-j4E" secondAttribute="top" id="tv5-II-Z4a"/>
+                <constraint firstItem="RS7-AB-yP2" firstAttribute="leading" secondItem="xEs-28-j4E" secondAttribute="leading" id="ysF-Q0-37o"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="cBf-0w-w1Z"/>
+                    <exclude reference="DLS-DT-ly6"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="443" y="251"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_place_black.png" width="24" height="24"/>
+    </resources>
+</document>
