@@ -53,13 +53,13 @@
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         
         if (error || !place) {
-            [[[UIAlertView alloc] initWithTitle:nil message:@"Đã có lỗi xảy ra, vui lòng thử lại sau!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+            [[[UIAlertView alloc] initWithTitle:nil message:@"An error occurred. Please try again!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
             return;
         }
         
         LocationObject *locationObj = [[LocationObject alloc] initWithLocation:place];
         if (!locationObj) return;
-        
+
         [self didSelectLocation:locationObj];
     }];
 }
@@ -81,14 +81,6 @@
 }
 
 #pragma mark - UISearchControllerDelegate
-
-- (void)willPresentSearchController:(UISearchController *)searchController {
-    [self.navigationItem setLeftBarButtonItem:nil animated:NO];
-}
-
-- (void)willDismissSearchController:(UISearchController *)searchController {
-    [self.navigationItem setLeftBarButtonItem:self.barBtnBack animated:NO];
-}
 
 - (void)didDismissSearchController:(UISearchController *)searchController {
     SearchResultViewController *vc = (SearchResultViewController *)searchController.searchResultsController;
@@ -184,12 +176,12 @@
 
 - (void)didSelectLocation:(LocationObject *)locationObj
 {
-    [self.navigationController popViewControllerAnimated:YES];
-    
     if ([self.delegate respondsToSelector:@selector(didSelectLocation:isStartLocation:)]) {
         [self addLocationToHistorySearch:locationObj];
         [self.delegate didSelectLocation:locationObj isStartLocation:self.isSearchForStartLocation];
     }
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)addLocationToHistorySearch:(LocationObject *)newLocation
@@ -214,7 +206,6 @@
         
         [arrHistorySearch addObject:locationInfo];
     }
-    
     [[NSUserDefaults standardUserDefaults] setObject:arrHistorySearch forKey:HISTORY_SEARCH];
 }
 
@@ -234,17 +225,21 @@
     self.searchController.dimsBackgroundDuringPresentation = YES;
     self.searchController.hidesNavigationBarDuringPresentation = NO;
     
-    [self.searchController.searchBar setSearchBarStyle:UISearchBarStyleMinimal];
     [self.searchController.searchBar sizeToFit];
     [self.searchController.searchBar setPlaceholder:@"Search address or place"];
     
-    self.navigationItem.titleView = self.searchController.searchBar;
+    self.navigationItem.title = @"Search Location";
     self.navigationItem.leftBarButtonItem = self.barBtnBack;
     self.navigationItem.hidesBackButton = YES;
-      
+    
+    UITableView *tblHeader = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 94.0) style:UITableViewStylePlain];
+    [tblHeader setTableHeaderView:self.searchController.searchBar];
+    
     ChooseOnMapView *chooseOnMapView = [Utils loadView:[ChooseOnMapView class] fromXib:@"ChooseOnMapView"];
     chooseOnMapView.delegate = self;
-    [self.tblListLocation setTableHeaderView:chooseOnMapView];
+    [tblHeader setTableFooterView:chooseOnMapView];
+    
+    [self.tblListLocation setTableHeaderView:tblHeader];
     [self.tblListLocation setTableFooterView:[UIView new]];
     [self.tblListLocation registerNib:[UINib nibWithNibName:@"PlaceCell" bundle:nil] forCellReuseIdentifier:@"PlaceCellId"];
 }

@@ -23,10 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.extendedLayoutIncludesOpaqueBars = NO;
-    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     ChooseOnMapView *chooseOnMapView = [Utils loadView:[ChooseOnMapView class] fromXib:@"ChooseOnMapView"];

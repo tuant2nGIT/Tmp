@@ -32,7 +32,7 @@
 + (void)configNavigationBar
 {
     UIFont *navigationFont = [UIFont fontWithName:@"HelveticaNeue-Medium" size:18.0];
-    UIColor *navigationColor = [self colorWithRGBHex:0x017ee6];
+    UIColor *navigationColor = [UIColor darkTextColor];
     
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:navigationFont,
                                                            NSForegroundColorAttributeName:navigationColor}];

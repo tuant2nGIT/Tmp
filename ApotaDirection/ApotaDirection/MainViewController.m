@@ -27,6 +27,8 @@
 
 @property (nonatomic, weak) IBOutlet UIView *searchLocationControl;
 @property (nonatomic, weak) IBOutlet UIButton *btnStartLocation, *btnEndLocation;
+@property (nonatomic, weak) IBOutlet UIButton *btnStartPin, *btnEndPin;
+
 @property (nonatomic, weak) IBOutlet UIButton *btnReverseLocation;
 @property (nonatomic, weak) IBOutlet UIButton *btnGetCurrentLocation;
 
@@ -91,8 +93,12 @@
 - (IBAction)touchReverseLocation:(id)sender
 {
     LocationObject *tmpPlace = startLocation;
+    
     startLocation = endLocation;
+    [self markLocation:startLocation isStartLocation:YES];
+    
     endLocation = tmpPlace;
+    [self markLocation:endLocation isStartLocation:NO];
     
     [self draw];
 }
@@ -153,6 +159,10 @@
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:startLocation.coordinate coordinate:endLocation.coordinate];
+                    [self.mapView setCamera:[self.mapView cameraForBounds:bounds insets:UIEdgeInsetsMake(50.0, 50.0, 150.0, 50.0)]];
+                    [self.mapView setSelectedMarker:nil];
+                    
                     [self drawDirection:path];
                 });
             }
@@ -161,7 +171,7 @@
                      [status isEqualToString:@"MAX_WAYPOINTS_EXCEEDED"])
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [[[UIAlertView alloc] initWithTitle:nil message:@"Không tìm thấy đường!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+                    [[[UIAlertView alloc] initWithTitle:nil message:@"Cannot find direction on map!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
                 });
             }
             else if ([status isEqualToString:@"INVALID_REQUEST"] ||
@@ -174,12 +184,19 @@
         }];
         [self addOperation:blockOperation];
     }
+    else if (startLocation && !endLocation) {
+        [self.mapView setCamera:[GMSCameraPosition cameraWithTarget:startLocation.coordinate zoom:16]];
+        [self.mapView setSelectedMarker:startMarker];
+    }
+    else if (!startLocation && endLocation) {
+        [self.mapView setCamera:[GMSCameraPosition cameraWithTarget:endLocation.coordinate zoom:16]];
+        [self.mapView setSelectedMarker:endMarker];
+    }
 }
 
 - (void)moveToLocation:(LocationObject *)location
 {
     [self.mapView animateToLocation:location.coordinate];
-    [self.mapView setCamera:[GMSCameraPosition cameraWithTarget:location.coordinate zoom:16]];
 }
 
 - (void)markLocation:(LocationObject *)location isStartLocation:(BOOL)isStartLocation
@@ -209,8 +226,6 @@
         endMarker = marker;
         endMarker.map = self.mapView;
     }
-    
-    [self.mapView setSelectedMarker:marker];
 }
 
 - (void)drawDirection:(GMSPath *)path
@@ -221,7 +236,7 @@
     }
     
     curentDirection = [GMSPolyline polylineWithPath:path];
-    curentDirection.strokeWidth = 5;
+    curentDirection.strokeWidth = 4;
     curentDirection.strokeColor = [Utils colorWithRGBHex:0x017ee6];
     curentDirection.map = self.mapView;
 }
@@ -280,18 +295,6 @@
     }
 }
 
-#pragma mark - GMSMapViewDelegate
-
-- (void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate
-{
-    LocationObject *locationObj = [[LocationObject alloc] init];
-    locationObj.name = @"Điểm đến";
-    locationObj.address = @"Điểm đến";
-    locationObj.coordinate = coordinate;
-    
-    [self didSelectLocation:locationObj isStartLocation:NO];
-}
-
 #pragma mark - Queue
 
 - (void)setupGetRouteQueue
@@ -329,7 +332,10 @@
     self.mapView.delegate = self;
     
     [self configLocationButton:self.btnStartLocation];
+    self.btnStartPin.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
     [self configLocationButton:self.btnEndLocation];
+    self.btnEndPin.imageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 - (void)configLocationButton:(UIButton *)button
@@ -347,7 +353,7 @@
 - (void)showError
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[[UIAlertView alloc] initWithTitle:nil message:@"Đã có lỗi xảy ra, vui lòng thử lại sau!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:nil message:@"An error occurred. Please try again!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
     });
 }
 
