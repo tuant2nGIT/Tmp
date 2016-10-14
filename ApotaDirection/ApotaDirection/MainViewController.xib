@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
@@ -24,17 +25,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WoE-pd-vKl" userLabel="mapView" customClass="GMSMapView">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cP7-m5-uyH" userLabel="searchLocationControl">
-                    <rect key="frame" x="20" y="301" width="280" height="100"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZP-dE-Ecr" userLabel="iconView">
-                            <rect key="frame" x="0.0" y="17" width="40" height="66"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlg-0t-Lrd" userLabel="btnStartPin">
-                                    <rect key="frame" x="0.0" y="0.0" width="40" height="27"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="27" id="FRv-mt-NEe"/>
                                     </constraints>
@@ -43,11 +40,8 @@
                                         <action selector="touchStartLocation:" destination="-1" eventType="touchUpInside" id="mmP-z1-SdM"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_location_connect.png" translatesAutoresizingMaskIntoConstraints="NO" id="yg8-UH-56f">
-                                    <rect key="frame" x="0.0" y="27" width="40" height="12"/>
-                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_location_connect.png" translatesAutoresizingMaskIntoConstraints="NO" id="yg8-UH-56f"/>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MdD-JQ-odp" userLabel="btnEndPin">
-                                    <rect key="frame" x="0.0" y="39" width="40" height="27"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="27" id="9tM-Vu-S06"/>
                                     </constraints>
@@ -73,37 +67,34 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0T-uH-YJ6" userLabel="contentView">
-                            <rect key="frame" x="40" y="17" width="200" height="66"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4s-cy-t5Y" userLabel="btnStartLocation">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="27"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="27" id="tMB-Zf-Le3"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                     <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                     <state key="normal" title="Touch to search location...">
-                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <state key="highlighted">
-                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
                                         <action selector="touchStartLocation:" destination="-1" eventType="touchUpInside" id="Kml-cF-qWK"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsL-73-sGe" userLabel="btnEndtLocation">
-                                    <rect key="frame" x="0.0" y="39" width="200" height="27"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="27" id="pqv-cs-btj"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                     <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                     <state key="normal" title="Touch to search location...">
-                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <state key="highlighted">
-                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
                                         <action selector="touchEndLocation:" destination="-1" eventType="touchUpInside" id="cM0-Gp-KZ9"/>
@@ -121,7 +112,6 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nW5-b5-bRn" userLabel="btnReverse">
-                            <rect key="frame" x="240" y="17" width="40" height="66"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="I4b-sx-3MN"/>
                                 <constraint firstAttribute="height" constant="66" id="mkc-YI-QEU"/>
@@ -132,7 +122,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="0.080225848229999994" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="1" green="0.080225848229999994" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="7lk-8t-BMa"/>
                         <constraint firstAttribute="trailing" secondItem="nW5-b5-bRn" secondAttribute="trailing" id="7qE-1P-p1I"/>
@@ -145,7 +135,6 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6x-77-6h0" userLabel="btnGetCurrentLocation">
-                    <rect key="frame" x="265" y="251" width="35" height="35"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="q7g-Rz-the"/>
                         <constraint firstAttribute="width" constant="35" id="sOn-fH-GFz"/>
@@ -156,7 +145,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="WoE-pd-vKl" secondAttribute="trailing" id="0nD-zS-PmD"/>
                 <constraint firstItem="cP7-m5-uyH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="0yR-zk-Jtm"/>
@@ -170,7 +159,6 @@
                 <constraint firstItem="D6x-77-6h0" firstAttribute="trailing" secondItem="cP7-m5-uyH" secondAttribute="trailing" id="zxN-Pc-Zh2"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="295" y="341"/>
         </view>
     </objects>

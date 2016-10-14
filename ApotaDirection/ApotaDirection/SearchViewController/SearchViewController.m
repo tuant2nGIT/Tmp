@@ -223,7 +223,7 @@
     
     self.definesPresentationContext = YES;
     self.searchController.dimsBackgroundDuringPresentation = YES;
-    self.searchController.hidesNavigationBarDuringPresentation = NO;
+    self.searchController.hidesNavigationBarDuringPresentation = YES;
     
     [self.searchController.searchBar sizeToFit];
     [self.searchController.searchBar setPlaceholder:@"Search address or place"];

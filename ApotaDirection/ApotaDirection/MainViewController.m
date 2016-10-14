@@ -291,6 +291,7 @@
         locationObj.address = @"Vị trí của bạn";
         locationObj.coordinate = CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude);
         
+        [self stopGetLocation];
         [self didSelectLocation:locationObj isStartLocation:YES];
     }
 }
