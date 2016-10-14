@@ -80,7 +80,7 @@
         [self moveToLocation:endLocation];
         [self markLocation:endLocation isStartLocation:NO];
     }
-    [self configLocationDesc];
+    [self draw];
 }
 
 - (IBAction)touchReverseLocation:(id)sender
@@ -89,12 +89,10 @@
     startLocation = endLocation;
     endLocation = tmpPlace;
     
-    [self configLocationDesc];
+    [self draw];
 }
 
-#pragma mark - Utils
-
-- (void)configLocationDesc
+- (void)draw
 {
     NSString *sStartLocationDesc = startLocation?(startLocation.address):(@"Touch to search location...");
     [self.btnStartLocation setTitle:sStartLocationDesc forState:UIControlStateNormal];
@@ -137,7 +135,6 @@
             if ([status isEqualToString:@"OK"])
             {
                 GMSPath *path = nil;
-                
                 @try {
                     path = [GMSPath pathFromEncodedPath:json[@"routes"][0][@"overview_polyline"][@"points"]];
                 }
@@ -150,10 +147,12 @@
                     return;
                 }
                 
-                GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];
-                singleLine.strokeWidth = 4;
-                singleLine.strokeColor = [Utils colorWithRGBHex:0x017ee6];
-                singleLine.map = self.mapView;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];
+                    singleLine.strokeWidth = 5;
+                    singleLine.strokeColor = [Utils colorWithRGBHex:0x017ee6];
+                    singleLine.map = self.mapView;
+                });
             }
             else if ([status isEqualToString:@"NOT_FOUND"] ||
                      [status isEqualToString:@"ZERO_RESULTS"] ||
