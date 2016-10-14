@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
                 <outlet property="btnEndLocation" destination="HsL-73-sGe" id="0jj-RU-cXe"/>
+                <outlet property="btnGetCurrentLocation" destination="D6x-77-6h0" id="cCV-9K-0Qa"/>
                 <outlet property="btnReverseLocation" destination="nW5-b5-bRn" id="e0h-jo-3An"/>
                 <outlet property="btnStartLocation" destination="x4s-cy-t5Y" id="Vog-dw-1tb"/>
                 <outlet property="mapView" destination="WoE-pd-vKl" id="mcV-cH-5q0"/>
@@ -25,7 +26,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cP7-m5-uyH" userLabel="searchLocationControl">
-                    <rect key="frame" x="20" y="296" width="280" height="100"/>
+                    <rect key="frame" x="20" y="301" width="280" height="100"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZP-dE-Ecr" userLabel="iconView">
                             <rect key="frame" x="0.0" y="17" width="40" height="66"/>
@@ -131,18 +132,32 @@
                         <constraint firstItem="nW5-b5-bRn" firstAttribute="leading" secondItem="T0T-uH-YJ6" secondAttribute="trailing" id="j84-Jt-Nfe"/>
                         <constraint firstItem="DZP-dE-Ecr" firstAttribute="leading" secondItem="cP7-m5-uyH" secondAttribute="leading" id="jrP-OA-Rv7"/>
                         <constraint firstItem="nW5-b5-bRn" firstAttribute="centerY" secondItem="cP7-m5-uyH" secondAttribute="centerY" id="nJG-Y7-16c"/>
-                        <constraint firstAttribute="width" constant="280" id="vHd-05-jBe"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6x-77-6h0" userLabel="btnGetCurrentLocation">
+                    <rect key="frame" x="265" y="251" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="q7g-Rz-the"/>
+                        <constraint firstAttribute="width" constant="35" id="sOn-fH-GFz"/>
+                    </constraints>
+                    <state key="normal" image="ic_my_location.png"/>
+                    <connections>
+                        <action selector="touchGetLocation:" destination="-1" eventType="touchUpInside" id="3Bs-gK-wk4"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="WoE-pd-vKl" secondAttribute="trailing" id="0nD-zS-PmD"/>
+                <constraint firstItem="cP7-m5-uyH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="0yR-zk-Jtm"/>
                 <constraint firstItem="WoE-pd-vKl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2BI-Cg-IZy"/>
-                <constraint firstAttribute="bottom" secondItem="cP7-m5-uyH" secondAttribute="bottom" constant="20" id="FHs-CW-mAw"/>
+                <constraint firstAttribute="bottom" secondItem="cP7-m5-uyH" secondAttribute="bottom" constant="15" id="FHs-CW-mAw"/>
+                <constraint firstItem="cP7-m5-uyH" firstAttribute="top" secondItem="D6x-77-6h0" secondAttribute="bottom" constant="15" id="JoL-ej-U3R"/>
                 <constraint firstItem="cP7-m5-uyH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="U37-PI-0Ts"/>
+                <constraint firstAttribute="trailing" secondItem="cP7-m5-uyH" secondAttribute="trailing" constant="20" id="kR6-e0-al5"/>
                 <constraint firstItem="WoE-pd-vKl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nm4-y6-ZM7"/>
                 <constraint firstAttribute="bottom" secondItem="WoE-pd-vKl" secondAttribute="bottom" id="sVD-Zl-Ikd"/>
+                <constraint firstItem="D6x-77-6h0" firstAttribute="trailing" secondItem="cP7-m5-uyH" secondAttribute="trailing" id="zxN-Pc-Zh2"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -154,5 +169,6 @@
         <image name="ic_location_pin_blue.png" width="40" height="40"/>
         <image name="ic_location_pin_red.png" width="45" height="45"/>
         <image name="ic_location_reverse.png" width="24" height="24"/>
+        <image name="ic_my_location.png" width="50" height="50"/>
     </resources>
 </document>

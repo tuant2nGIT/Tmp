@@ -52,6 +52,9 @@
 		7B115DE11DAF34920035F81B /* btnBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B115DDE1DAF34920035F81B /* btnBack.png */; };
 		7B115DE21DAF34920035F81B /* btnBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B115DDF1DAF34920035F81B /* btnBack@2x.png */; };
 		7B115DE31DAF34920035F81B /* btnBack@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B115DE01DAF34920035F81B /* btnBack@3x.png */; };
+		7B6BE2A61DB086CD002B93A8 /* ic_my_location.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B6BE2A31DB086CD002B93A8 /* ic_my_location.png */; };
+		7B6BE2A71DB086CD002B93A8 /* ic_my_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B6BE2A41DB086CD002B93A8 /* ic_my_location@2x.png */; };
+		7B6BE2A81DB086CD002B93A8 /* ic_my_location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B6BE2A51DB086CD002B93A8 /* ic_my_location@3x.png */; };
 		7BA2084F1DAF440000C8492F /* PlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA2084D1DAF440000C8492F /* PlaceCell.m */; };
 		7BA208501DAF440000C8492F /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA2084E1DAF440000C8492F /* PlaceCell.xib */; };
 		7BA2085F1DAF607800C8492F /* ic_place_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA208591DAF607800C8492F /* ic_place_black.png */; };
@@ -119,6 +122,9 @@
 		7B115DDE1DAF34920035F81B /* btnBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnBack.png; sourceTree = "<group>"; };
 		7B115DDF1DAF34920035F81B /* btnBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnBack@2x.png"; sourceTree = "<group>"; };
 		7B115DE01DAF34920035F81B /* btnBack@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnBack@3x.png"; sourceTree = "<group>"; };
+		7B6BE2A31DB086CD002B93A8 /* ic_my_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_my_location.png; sourceTree = "<group>"; };
+		7B6BE2A41DB086CD002B93A8 /* ic_my_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_my_location@2x.png"; sourceTree = "<group>"; };
+		7B6BE2A51DB086CD002B93A8 /* ic_my_location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_my_location@3x.png"; sourceTree = "<group>"; };
 		7BA2084C1DAF440000C8492F /* PlaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceCell.h; sourceTree = "<group>"; };
 		7BA2084D1DAF440000C8492F /* PlaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceCell.m; sourceTree = "<group>"; };
 		7BA2084E1DAF440000C8492F /* PlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceCell.xib; sourceTree = "<group>"; };
@@ -261,6 +267,9 @@
 		7B115DDD1DAF34920035F81B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7B6BE2A31DB086CD002B93A8 /* ic_my_location.png */,
+				7B6BE2A41DB086CD002B93A8 /* ic_my_location@2x.png */,
+				7B6BE2A51DB086CD002B93A8 /* ic_my_location@3x.png */,
 				3CBFB0771DAFC29C002FC9F4 /* ic_history_gray.png */,
 				3CBFB0781DAFC29C002FC9F4 /* ic_history_gray@2x.png */,
 				3CBFB0791DAFC29C002FC9F4 /* ic_history_gray@3x.png */,
@@ -377,12 +386,15 @@
 				7B115DE11DAF34920035F81B /* btnBack.png in Resources */,
 				7B115DE31DAF34920035F81B /* btnBack@3x.png in Resources */,
 				7B115DCD1DAF262D0035F81B /* SearchViewController.xib in Resources */,
+				7B6BE2A61DB086CD002B93A8 /* ic_my_location.png in Resources */,
 				7B115DD11DAF28F70035F81B /* GooglePlaces.bundle in Resources */,
 				3CBFB0701DAFC1FA002FC9F4 /* ic_location_connect@3x.png in Resources */,
 				3CBFB07F1DAFC29C002FC9F4 /* ic_history_gray@3x.png in Resources */,
+				7B6BE2A81DB086CD002B93A8 /* ic_my_location@3x.png in Resources */,
 				3CBFB0731DAFC1FA002FC9F4 /* ic_location_pin_blue@3x.png in Resources */,
 				7B115DA51DAF1AE70035F81B /* GoogleMaps.bundle in Resources */,
 				3CBFB0821DAFC29C002FC9F4 /* ic_location_reverse@3x.png in Resources */,
+				7B6BE2A71DB086CD002B93A8 /* ic_my_location@2x.png in Resources */,
 				7BA208631DAF607800C8492F /* ic_place_gray@2x.png in Resources */,
 				3CBFB06F1DAFC1FA002FC9F4 /* ic_location_connect@2x.png in Resources */,
 				7BA208601DAF607800C8492F /* ic_place_black@2x.png in Resources */,

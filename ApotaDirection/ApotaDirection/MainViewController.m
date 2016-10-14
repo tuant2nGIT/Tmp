@@ -13,10 +13,14 @@
 
 #import "Utils.h"
 
-@interface MainViewController () <SearchViewControllerDelegate,GMSMapViewDelegate>
+@interface MainViewController () <SearchViewControllerDelegate,GMSMapViewDelegate,CLLocationManagerDelegate>
 {
     LocationObject *startLocation, *endLocation;
     GMSMarker *startMarker, *endMarker;
+    GMSPolyline *curentDirection;
+    
+    BOOL isGetLocation;
+    CLLocationManager *locationManager;
 }
 
 @property (nonatomic, weak) IBOutlet GMSMapView *mapView;
@@ -24,6 +28,7 @@
 @property (nonatomic, weak) IBOutlet UIView *searchLocationControl;
 @property (nonatomic, weak) IBOutlet UIButton *btnStartLocation, *btnEndLocation;
 @property (nonatomic, weak) IBOutlet UIButton *btnReverseLocation;
+@property (nonatomic, weak) IBOutlet UIButton *btnGetCurrentLocation;
 
 @property (nonatomic, strong) NSOperationQueue *getRouteQueue;
 
@@ -148,10 +153,7 @@
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];
-                    singleLine.strokeWidth = 5;
-                    singleLine.strokeColor = [Utils colorWithRGBHex:0x017ee6];
-                    singleLine.map = self.mapView;
+                    [self drawDirection:path];
                 });
             }
             else if ([status isEqualToString:@"NOT_FOUND"] ||
@@ -183,22 +185,27 @@
 - (void)markLocation:(LocationObject *)location isStartLocation:(BOOL)isStartLocation
 {
     GMSMarker *marker = [GMSMarker markerWithPosition:location.coordinate];
-    marker.title = location.name;
     marker.icon = isStartLocation?[UIImage imageNamed:@"ic_location_pin_blue"]:[UIImage imageNamed:@"ic_location_pin_red"];
-    marker.appearAnimation = kGMSMarkerAnimationPop;
+    if (location.address) {
+        marker.title = location.name;
+    }
     
     if (isStartLocation)
     {
         if (startMarker) {
+            startMarker.map = nil;
             startMarker = nil;
         }
+        
         startMarker = marker;
         startMarker.map = self.mapView;
     }
     else {
         if (endMarker) {
+            endMarker.map = nil;
             endMarker = nil;
         }
+        
         endMarker = marker;
         endMarker.map = self.mapView;
     }
@@ -206,23 +213,83 @@
     [self.mapView setSelectedMarker:marker];
 }
 
-- (void)clearMapView
+- (void)drawDirection:(GMSPath *)path
 {
-    startMarker = nil;
-    endMarker = nil;
-    [self.mapView clear];
+    if (curentDirection) {
+        curentDirection.map = nil;
+        curentDirection = nil;
+    }
+    
+    curentDirection = [GMSPolyline polylineWithPath:path];
+    curentDirection.strokeWidth = 5;
+    curentDirection.strokeColor = [Utils colorWithRGBHex:0x017ee6];
+    curentDirection.map = self.mapView;
+}
+
+#pragma mark - GetUserLocation
+
+- (IBAction)touchGetLocation:(id)sender
+{
+    isGetLocation = NO;
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [locationManager requestWhenInUseAuthorization];
+    }
+    
+    BOOL isEnableLocationServices = [CLLocationManager locationServicesEnabled];
+    BOOL isDeniedLocationServices = [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied;
+    
+    if (!isEnableLocationServices || isDeniedLocationServices)
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Từ chối truy cập Vị trí" message:@"Ứng dụng yêu cầu truy cập dữ liệu Vị trí của thiết bị" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+    }
+    else {
+        [locationManager startUpdatingLocation];
+    }
+}
+
+- (void)stopGetLocation
+{
+    [locationManager stopUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    if (isGetLocation) return;
+    isGetLocation = NO;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    if (isGetLocation) return;
+    
+    if (newLocation != nil)
+    {
+        isGetLocation = YES;
+        
+        LocationObject *locationObj = [[LocationObject alloc] init];
+        locationObj.name = @"Vị trí của bạn";
+        locationObj.address = @"Vị trí của bạn";
+        locationObj.coordinate = CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+        
+        [self didSelectLocation:locationObj isStartLocation:YES];
+    }
 }
 
 #pragma mark - GMSMapViewDelegate
 
-- (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate
-{
-    
-}
-
 - (void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate
 {
+    LocationObject *locationObj = [[LocationObject alloc] init];
+    locationObj.name = @"Điểm đến";
+    locationObj.address = @"Điểm đến";
+    locationObj.coordinate = coordinate;
     
+    [self didSelectLocation:locationObj isStartLocation:NO];
 }
 
 #pragma mark - Queue
