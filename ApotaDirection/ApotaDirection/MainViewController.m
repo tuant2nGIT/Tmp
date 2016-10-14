@@ -25,6 +25,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *btnStartLocation, *btnEndLocation;
 @property (nonatomic, weak) IBOutlet UIButton *btnReverseLocation;
 
+@property (nonatomic, strong) NSOperationQueue *getRouteQueue;
+
 @end
 
 @implementation MainViewController
@@ -43,6 +45,7 @@
 {
     [super viewDidLoad];
     [self setupUI];
+    [self setupGetRouteQueue];
 }
 
 #pragma mark - Action
@@ -64,7 +67,6 @@
     
     [self.navigationController pushViewController:vc animated:YES];
 }
-
 
 - (void)didSelectLocation:(LocationObject *)location isStartLocation:(BOOL)isStartLocation
 {
@@ -100,41 +102,76 @@
     NSString *sEndLocationDesc = endLocation?(endLocation.address):(@"Touch to search location...");
     [self.btnEndLocation setTitle:sEndLocationDesc forState:UIControlStateNormal];
     
-    if (startLocation && endLocation) {
-        NSString *urlString = [NSString stringWithFormat:
-                               @"%@?origin=%f,%f&destination=%f,%f&sensor=true&key=%@&mode=driving",
-                               @"https://maps.googleapis.com/maps/api/directions/json",
-                               startLocation.coordinate.latitude,
-                               startLocation.coordinate.longitude,
-                               endLocation.coordinate.latitude,
-                               endLocation.coordinate.longitude,
-                               GOOGLE_DIRECTIONS_API_KEY];
-        NSURL *directionsURL = [NSURL URLWithString:urlString];
+    if (startLocation && endLocation)
+    {
+        NSString *sUrlRequest = [NSString stringWithFormat:
+                                 @"https://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=true&key=%@&mode=driving",
+                                 startLocation.coordinate.latitude,
+                                 startLocation.coordinate.longitude,
+                                 endLocation.coordinate.latitude,
+                                 endLocation.coordinate.longitude,
+                                 GOOGLE_DIRECTIONS_API_KEY];
+        NSURL *directionsURL = [NSURL URLWithString:sUrlRequest];
         
-        //origin=place_id:ChIJ3S-JXmauEmsRUcIaWtf4MzE
+        NSBlockOperation *blockOperation = [[NSBlockOperation alloc] init];
+        blockOperation.queuePriority = NSOperationQueuePriorityLow;
         
-        NSData *dta=[NSData dataWithContentsOfURL:directionsURL];
-        NSDictionary *dict=(NSDictionary *)[NSJSONSerialization JSONObjectWithData:dta options:kNilOptions error:nil];
-        NSLog(@"%@",dict);
-        
-        /*
-         OK indicates the response contains a valid result.
-         NOT_FOUND indicates at least one of the locations specified in the request's origin, destination, or waypoints could not be geocoded.
-         ZERO_RESULTS indicates no route could be found between the origin and destination.
-         */
-        
-        /*
-         Get Center [yourMapView.camera target]
-         */
-        
-        GMSPath *path =[GMSPath pathFromEncodedPath:dict[@"routes"][0][@"overview_polyline"][@"points"]];
-        
-        
-        
-        GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];
-        singleLine.strokeWidth = 4;
-        singleLine.strokeColor = [Utils colorWithRGBHex:0x017ee6];
-        singleLine.map = self.mapView;
+        __weak NSBlockOperation *weakOperation = blockOperation;
+        [blockOperation addExecutionBlock:^{
+            NSError *error = nil;
+            NSData *data = [NSData dataWithContentsOfURL:directionsURL];
+            if ([weakOperation isCancelled]) return;
+            
+            if (!data) {
+                [self showError];
+                return;
+            }
+            
+            NSDictionary *json = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            if (error) {
+                [self showError];
+                return;
+            }
+            
+            NSString *status = json[@"status"];
+            if ([status isEqualToString:@"OK"])
+            {
+                GMSPath *path = nil;
+                
+                @try {
+                    path = [GMSPath pathFromEncodedPath:json[@"routes"][0][@"overview_polyline"][@"points"]];
+                }
+                @catch (NSException *exception) {
+                    NSLog(@"%@",exception.description);
+                }
+                
+                if (!path) {
+                    [self showError];
+                    return;
+                }
+                
+                GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];
+                singleLine.strokeWidth = 4;
+                singleLine.strokeColor = [Utils colorWithRGBHex:0x017ee6];
+                singleLine.map = self.mapView;
+            }
+            else if ([status isEqualToString:@"NOT_FOUND"] ||
+                     [status isEqualToString:@"ZERO_RESULTS"] ||
+                     [status isEqualToString:@"MAX_WAYPOINTS_EXCEEDED"])
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[[UIAlertView alloc] initWithTitle:nil message:@"Không tìm thấy đường!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+                });
+            }
+            else if ([status isEqualToString:@"INVALID_REQUEST"] ||
+                     [status isEqualToString:@"OVER_QUERY_LIMIT"] ||
+                     [status isEqualToString:@"REQUEST_DENIED"] ||
+                     [status isEqualToString:@"UNKNOWN_ERROR"])
+            {
+                [self showError];
+            }
+        }];
+        [self addOperation:blockOperation];
     }
 }
 
@@ -189,6 +226,26 @@
     
 }
 
+#pragma mark - Queue
+
+- (void)setupGetRouteQueue
+{
+    self.getRouteQueue = [[NSOperationQueue alloc] init];
+    self.getRouteQueue.name = @"queue.getroute";
+    self.getRouteQueue.maxConcurrentOperationCount = 1;
+}
+
+- (void)cancelAllOperation
+{
+    [self.getRouteQueue cancelAllOperations];
+}
+
+- (void)addOperation:(NSOperation *)operation
+{
+    [self cancelAllOperation];
+    [self.getRouteQueue addOperation:operation];
+}
+
 #pragma mark - SetupUI
 
 - (void)setupUI
@@ -219,6 +276,13 @@
     button.layer.borderWidth = 1.0;
     button.layer.borderColor = [UIColor colorWithWhite:0.0 alpha:0.2].CGColor;
     button.clipsToBounds = YES;
+}
+
+- (void)showError
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[[UIAlertView alloc] initWithTitle:nil message:@"Đã có lỗi xảy ra, vui lòng thử lại sau!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+    });
 }
 
 - (void)didReceiveMemoryWarning
