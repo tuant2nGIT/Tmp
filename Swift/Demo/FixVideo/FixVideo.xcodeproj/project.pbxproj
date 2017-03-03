@@ -1,0 +1,293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7B9FC7E81E67B2BC00B7D237 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC7E71E67B2BC00B7D237 /* AppDelegate.swift */; };
+		7B9FC7EF1E67B2BC00B7D237 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B9FC7EE1E67B2BC00B7D237 /* Assets.xcassets */; };
+		7B9FC7FB1E67B2DD00B7D237 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC7F91E67B2DD00B7D237 /* MainViewController.swift */; };
+		7B9FC7FE1E67B2F500B7D237 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B9FC7FD1E67B2F500B7D237 /* LaunchScreen.storyboard */; };
+		7B9FC8001E67B60300B7D237 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B9FC7FF1E67B60300B7D237 /* MainViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7B9FC7E41E67B2BC00B7D237 /* FixVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FixVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B9FC7E71E67B2BC00B7D237 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7B9FC7EE1E67B2BC00B7D237 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7B9FC7F31E67B2BC00B7D237 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B9FC7F91E67B2DD00B7D237 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		7B9FC7FD1E67B2F500B7D237 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7B9FC7FF1E67B60300B7D237 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7B9FC7E11E67B2BC00B7D237 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7B9FC7DB1E67B2BB00B7D237 = {
+			isa = PBXGroup;
+			children = (
+				7B9FC7E61E67B2BC00B7D237 /* FixVideo */,
+				7B9FC7E51E67B2BC00B7D237 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7B9FC7E51E67B2BC00B7D237 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7B9FC7E41E67B2BC00B7D237 /* FixVideo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7B9FC7E61E67B2BC00B7D237 /* FixVideo */ = {
+			isa = PBXGroup;
+			children = (
+				7B9FC7E71E67B2BC00B7D237 /* AppDelegate.swift */,
+				7B9FC7F91E67B2DD00B7D237 /* MainViewController.swift */,
+				7B9FC7FF1E67B60300B7D237 /* MainViewController.xib */,
+				7B9FC7FD1E67B2F500B7D237 /* LaunchScreen.storyboard */,
+				7B9FC7EE1E67B2BC00B7D237 /* Assets.xcassets */,
+				7B9FC7F31E67B2BC00B7D237 /* Info.plist */,
+			);
+			path = FixVideo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7B9FC7E31E67B2BC00B7D237 /* FixVideo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B9FC7F61E67B2BC00B7D237 /* Build configuration list for PBXNativeTarget "FixVideo" */;
+			buildPhases = (
+				7B9FC7E01E67B2BC00B7D237 /* Sources */,
+				7B9FC7E11E67B2BC00B7D237 /* Frameworks */,
+				7B9FC7E21E67B2BC00B7D237 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FixVideo;
+			productName = FixVideo;
+			productReference = 7B9FC7E41E67B2BC00B7D237 /* FixVideo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7B9FC7DC1E67B2BB00B7D237 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Storm;
+				TargetAttributes = {
+					7B9FC7E31E67B2BC00B7D237 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = KX7BQBX473;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 7B9FC7DF1E67B2BB00B7D237 /* Build configuration list for PBXProject "FixVideo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7B9FC7DB1E67B2BB00B7D237;
+			productRefGroup = 7B9FC7E51E67B2BC00B7D237 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7B9FC7E31E67B2BC00B7D237 /* FixVideo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7B9FC7E21E67B2BC00B7D237 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B9FC7FE1E67B2F500B7D237 /* LaunchScreen.storyboard in Resources */,
+				7B9FC8001E67B60300B7D237 /* MainViewController.xib in Resources */,
+				7B9FC7EF1E67B2BC00B7D237 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7B9FC7E01E67B2BC00B7D237 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B9FC7FB1E67B2DD00B7D237 /* MainViewController.swift in Sources */,
+				7B9FC7E81E67B2BC00B7D237 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7B9FC7F41E67B2BC00B7D237 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7B9FC7F51E67B2BC00B7D237 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7B9FC7F71E67B2BC00B7D237 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KX7BQBX473;
+				INFOPLIST_FILE = FixVideo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = storm.FixVideo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		7B9FC7F81E67B2BC00B7D237 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KX7BQBX473;
+				INFOPLIST_FILE = FixVideo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = storm.FixVideo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7B9FC7DF1E67B2BB00B7D237 /* Build configuration list for PBXProject "FixVideo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B9FC7F41E67B2BC00B7D237 /* Debug */,
+				7B9FC7F51E67B2BC00B7D237 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B9FC7F61E67B2BC00B7D237 /* Build configuration list for PBXNativeTarget "FixVideo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B9FC7F71E67B2BC00B7D237 /* Debug */,
+				7B9FC7F81E67B2BC00B7D237 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7B9FC7DC1E67B2BB00B7D237 /* Project object */;
+}
