@@ -1,88 +1,53 @@
-//: Playground - noun: a place where people can play
-
-import UIKit
-
-var longtitude: Double
-longtitude = -86.783333
-longtitude = -186.783333
-longtitude = -1286.783333
-longtitude = -12386.783333
-longtitude = -123486.783333
-longtitude = -1234586.783333
-
-var name = "Tim"
-var age = 25
-var ratio = 25.12313123123123
-
-"Your name is \(name) and your age is \(ratio)"
-
-
-var list = ["Tuan","Anh","Phap",1]
-list.dynamicType
-list.description
-list.debugDescription
-list.endIndex
-list.count
-
-var songs: [String] = []
-songs.append("1")
-songs.append("2")
-songs.append("3")
-
-var singers: [String] = ["a","b","c"]
-
-var both = songs + singers
-
-var info = []
-info.setValue("1", forKey: "name")
-info.setValue(1, forKey: "age")
-
-var action: String
-var person = "hater"
-if person == "hater" {
-    action = "hate"
-}
-else if person == "player" {
-    action = "play"
-}
-else {
-    action = "cruise"
-}
-
-for i in 0...10 {
-    print("\(i) * 10 = \(i*10) \n")
-}
-
-var str = "Fakers gonna"
-for j in 0...10 {
-    str += " fake"
-}
-print(str)
-
-for song in songs {
-    str += song
-}
-print(str)
-
-var peoples = ["players","haters","heart-breakers","fakers"]
-var actions = ["play","hate","break","fake"]
-
-var descs: [String] = []
-
-for i in 0...(peoples.count - 1) {
-    var people = peoples[i]
-    var action = actions[i]
+class Album {
+    var name: String
     
-    var desc: String = people + " gonna"
-    for j in 0...4 {
-        desc += " \(action)"
+    init(name: String) {
+        self.name = name
     }
-    descs.append(desc)
-}
-print(descs)
-
-for i in 0...3 {
-    print("\(peoples[i]) gonna \(actions[i])")
+    
+    func getName() -> String {
+        return "Name is \(name)"
+    }
 }
 
-        
+class StudioAlbum: Album {
+    var studio: String
+    
+    init(name: String, studio: String) {
+        self.studio = studio
+        super.init(name: name)
+    }
+}
+
+class LiveAlbum: Album {
+    var location: String
+    
+    init(name: String, location: String) {
+        self.location = location;
+        super.init(name: name)
+    }
+}
+
+var  taylorSwift = StudioAlbum(name: "Taylor Swift", studio: "The Castles Studios")
+var fearless = StudioAlbum(name: "Speak Now", studio: "Aimeeland Studio")
+var iTunesLive = LiveAlbum(name: "iTunes Live from Soho", location: "New York")
+
+var allAlbums: [Album] = [taylorSwift, fearless, iTunesLive]
+
+for i in 0...(allAlbums.count - 1) {
+    var album = allAlbums[i]
+    album.getName()
+}
+
+for album in allAlbums {
+    if let studioAlbum = album as? StudioAlbum {
+        print(studioAlbum.studio)
+    }
+    else if let liveAlbum = album as? LiveAlbum {
+        print(liveAlbum.location)
+    }
+}
+
+
+
+

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="EPh-ut-EL5" customClass="FontColorPickerView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PjI-Sj-0mi" userLabel="backView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hew-Yt-efk" userLabel="contentView">
+                    <rect key="frame" x="0.0" y="348" width="320" height="220"/>
+                    <subviews>
+                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EBF-Aa-qUM" userLabel="toolBar">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="jal-b8-oC5"/>
+                            </constraints>
+                            <items/>
+                        </toolbar>
+                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJa-bJ-bdB" userLabel="pickerView">
+                            <rect key="frame" x="0.0" y="44" width="320" height="176"/>
+                            <connections>
+                                <outlet property="dataSource" destination="EPh-ut-EL5" id="eRq-VG-PNV"/>
+                                <outlet property="delegate" destination="EPh-ut-EL5" id="gXA-6D-abm"/>
+                            </connections>
+                        </pickerView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="WJa-bJ-bdB" firstAttribute="leading" secondItem="Hew-Yt-efk" secondAttribute="leading" id="Igh-wL-icY"/>
+                        <constraint firstAttribute="trailing" secondItem="WJa-bJ-bdB" secondAttribute="trailing" id="Inh-EN-Ibf"/>
+                        <constraint firstAttribute="height" constant="220" id="QcT-33-7Na"/>
+                        <constraint firstAttribute="bottom" secondItem="WJa-bJ-bdB" secondAttribute="bottom" id="SZm-dB-cMZ"/>
+                        <constraint firstItem="EBF-Aa-qUM" firstAttribute="leading" secondItem="Hew-Yt-efk" secondAttribute="leading" id="c0V-do-IvI"/>
+                        <constraint firstAttribute="trailing" secondItem="EBF-Aa-qUM" secondAttribute="trailing" id="eCG-P1-Mj9"/>
+                        <constraint firstItem="EBF-Aa-qUM" firstAttribute="top" secondItem="Hew-Yt-efk" secondAttribute="top" id="qeS-uC-FGX"/>
+                        <constraint firstItem="WJa-bJ-bdB" firstAttribute="top" secondItem="EBF-Aa-qUM" secondAttribute="bottom" id="uOG-bC-Sz0"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Hew-Yt-efk" secondAttribute="trailing" id="1gH-eg-8B3"/>
+                <constraint firstItem="Hew-Yt-efk" firstAttribute="leading" secondItem="EPh-ut-EL5" secondAttribute="leading" id="59q-cm-R6e"/>
+                <constraint firstItem="PjI-Sj-0mi" firstAttribute="top" secondItem="EPh-ut-EL5" secondAttribute="top" id="9Lk-Ui-JDW"/>
+                <constraint firstAttribute="bottom" secondItem="PjI-Sj-0mi" secondAttribute="bottom" id="eBG-1A-u7B"/>
+                <constraint firstItem="PjI-Sj-0mi" firstAttribute="leading" secondItem="EPh-ut-EL5" secondAttribute="leading" id="fzY-TC-5de"/>
+                <constraint firstAttribute="trailing" secondItem="PjI-Sj-0mi" secondAttribute="trailing" id="oDV-HY-uNJ"/>
+                <constraint firstAttribute="bottom" secondItem="Hew-Yt-efk" secondAttribute="bottom" id="pTm-5P-P5x"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="backView" destination="PjI-Sj-0mi" id="7uz-WD-Uuj"/>
+                <outlet property="contentView" destination="Hew-Yt-efk" id="b53-yX-RXV"/>
+                <outlet property="contentViewPosition" destination="pTm-5P-P5x" id="jfQ-jt-NaX"/>
+                <outlet property="pickerView" destination="WJa-bJ-bdB" id="e37-7V-SFT"/>
+                <outlet property="toolBar" destination="EBF-Aa-qUM" id="B5C-bh-ea7"/>
+            </connections>
+            <point key="canvasLocation" x="340" y="340"/>
+        </view>
+    </objects>
+</document>

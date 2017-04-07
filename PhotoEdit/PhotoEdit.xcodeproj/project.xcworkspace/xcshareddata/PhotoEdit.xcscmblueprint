@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4347383c-14f2-174b-a4d3-56600a00db68++3019",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "4347383c-14f2-174b-a4d3-56600a00db68++3019" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4347383c-14f2-174b-a4d3-56600a00db68++3019" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "7C1CA9AB-9E57-4B95-91B0-E764EED88533",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4347383c-14f2-174b-a4d3-56600a00db68++3019" : "Others\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PhotoEdit",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PhotoEdit\/PhotoEdit.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/192.168.202.22\/svn\/mocha_ios_new",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4347383c-14f2-174b-a4d3-56600a00db68++3019"
+    }
+  ]
+}
